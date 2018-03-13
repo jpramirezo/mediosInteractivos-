@@ -28,10 +28,10 @@ var rotar = 0;
 
 var estanque;
 function preload() {
-  imagen = loadImage('assets/jardin.jpg');
-  mascara = loadImage('assets/pez2.png');
-  mascara1 = loadImage('assets/jardin.jpg');
-  estanque = loadImage('assets/estanque.jpg');
+  imagen = loadImage('jardin.jpg');
+  mascara = loadImage('pez2.png');
+  mascara1 = loadImage('jardin.jpg');
+  estanque = loadImage('estanque.jpg');
 }
 function setup() {
 
