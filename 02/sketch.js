@@ -12,7 +12,7 @@ var dummy = 0;
 var rectx = 25;
 var cordy = 45;
 
-
+// Creo una serie de fors para hacer los rectangulos, identificando patrones dentro de la figura
 
 function setup() { 
   createCanvas(458, 450);
@@ -24,7 +24,7 @@ function setup() {
   rect(21,365, 428, 20);
 
 	
-
+// Lineas negras debajo de los patrones de colores
     for (i= 1; i<= 3; i += 1){
       rect(21, cordy + 44, 428,4);    
       cordy += 8;
@@ -43,7 +43,7 @@ function setup() {
     }
     cordy += 34;
   }
-  
+ 	// La linea se repite 4 veces en el cuadro 
 	for ( m = 1; m <= 4; m ++){
   dummy ++;  
   rectx = 25; 
@@ -59,8 +59,10 @@ function setup() {
     else{
     	cordy += 80;
     }   
+	// Primer patrón: 3 Rectangulos del mismo color 
   	for ( p = 1; p <= 3; p += 1){
       contador = 0;  
+	// Segundo patrón: ese grupo de rectangulos se repiten 6 veces cambiandoel color
       for ( j = 1; j <= 6; j +=1){	
         contador = contador + 1;
         if (contador == 1 ){
@@ -81,6 +83,7 @@ function setup() {
         else {
           fill (212,197,163);
         }
+	 // Se pintan los grupos de 6 colores 4 veces
         for ( i = 1; i < 4; i ++){
             rect(rectx,cordy, 4, 40);
             rectx = rectx + 8;
@@ -93,7 +96,7 @@ function setup() {
   }      
 
 
-  
+  // Lineas negras arriba de los colores 
   rectx = 49;
   dummy = 0;
   for (l = 1; l<=5; l++){  	
@@ -114,6 +117,7 @@ function setup() {
     else{
     	cordy += 80;
     } 
+	  // Selección de colores para los segundos patrones de colores
     for ( a = 1; a <4; a++){
       contador = 0;  
       for ( b = 1; b < 7; b ++){	
@@ -130,12 +134,13 @@ function setup() {
         else if(contador == 4){
           fill (188,191,182); 
         }  
-				else if(contador == 5){
+	else if(contador == 5){
           fill (255); 
         } 
         else {
           fill (201,174,162);
         }
+	      // Creacin de los rectangulos
         for ( c = 1; c < 4; c ++){
             rect(rectx,cordy, 4, 40);
             rectx = rectx + 8;
