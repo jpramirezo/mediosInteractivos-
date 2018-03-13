@@ -96,7 +96,8 @@ function draw() {
       filtro = 10;
     }
   }
-  // Al seleccionar el filtro numero 1, se pinta un cuadrado que cada vez que se pinta se hace más visible
+  // Al seleccionar el filtro numero 1, se pinta un cuadrado que toma el RBG rojo del pixel que cada vez que se pinta se hace más visible.
+  // al hacer click otra vez en el filtro se vuelve a hacer transparente.
   if (filtro == 1) {
     for (var f = mouseY-10; f<mouseY+10; f += 2) {  
       for (var c = mouseX-10; c<mouseX+10; c += 2) {  
