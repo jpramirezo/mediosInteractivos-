@@ -43,6 +43,9 @@ function setup() {
 }
 
 function draw() {
+  if(filtro == 10){
+    image(imagen, 0, 60, 500, 500);   
+  }
   fill(0);
   strokeWeight(1);
   stroke(1);
