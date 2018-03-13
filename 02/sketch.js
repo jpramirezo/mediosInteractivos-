@@ -12,15 +12,15 @@ var dummy = 0;
 var rectx = 25;
 var cordy = 45;
 
-// Creo una serie de fors para hacer los rectangulos, identificando patrones dentro de la figura
-
 function setup() { 
   createCanvas(458, 450);
 	background(211,204,189);   	
 	
   noStroke();
   fill(0);
-  rect(21, cordy + 20, 428, 20);
+	
+//Rectangulos negros al principio y final del cuadro (los más gruesos)
+  rect(21, cordy + 20, 428, 20); 
   rect(21,365, 428, 20);
 
 	
@@ -166,19 +166,25 @@ function setup() {
   cordy = 80;
   rectx = 0;
   fill(0);
-	
+
+// Grupos de lineas horizontales negras en las cordenadas Y = 105 & Y = 325
   for( j =1; j <=2; j++){
+// Son 3 lineas en cada grupo
     for (i= 1; i<= 3; i += 1){
       rect(21, cordy+25, 433,4.5);    
       cordy += 8;
     } 
     cordy = 300;
   }
-  
+	
+// Grupos de lineas negras en los laterales 
   cordy = 85;
   rectx = rectx+25;
+// Se repiten dos veces en el cuadro en las posiciones Y = 85 & Y=325	
   for (m = 1; m<= 2; m++){
+// Se repiten 2 veces e la misma linea horizontal en las posiciones X = 25 & X = 433	  
     for (j =1 ; j<=2 ; j++){
+// Son 3 lineas en cada grupo
       for( i = 1; i<=3; i ++){
         rect( rectx, cordy, 4.5, 40);
         rectx += 8;
@@ -190,8 +196,10 @@ function setup() {
   }  
 	
   rectx = 25;
-  
+// Grupos de lineas en la mitad del cuadro en la posición Y = 165 que se repiten 2 veces en la misma linea horizontal 
+// X = 25 & X = 433	
   for ( j =1 ; j <= 2; j++){
+// Son 3 lineas en cada grupo
     for ( i = 1; i<=3; i++){
       rect ( rectx,165,4,120);
       rectx += 8;
