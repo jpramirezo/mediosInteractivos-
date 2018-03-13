@@ -25,26 +25,30 @@ function setup() {
 
 	
 // Lineas negras debajo de los patrones de colores
+// Grupo de 3 lineas horizontales (primeras 3)
     for (i= 1; i<= 3; i += 1){
       rect(21, cordy + 44, 428,4);    
       cordy += 8;
     } 
-		cordy = 298;
+// Grupo de 3 lineas horizontales (últimas 3; cordenada y = 298)
+    cordy = 298;
     for (i= 1; i<= 3; i += 1){
       rect(21, cordy + 44, 428,4);    
       cordy += 8;
     } 
-  	cordy = 77;
-  
-	for( j = 1; j <=3; j++){
+// Grupo de 6 lineas (segundo for) abajo del cuadro que se repiten 3 veces(primer for)
+// Este grupo de lineas tiene una distancia en Y de 34
+  cordy = 77;
+  for( j = 1; j <=3; j++){
     for( i = 1; i<= 6; i++){
       rect ( 21, cordy + 44, 428,4);
       cordy += 8;
     }
     cordy += 34;
   }
- 	// La linea horizontal de colores se repite 4 veces en el cuadro 
-	for ( m = 1; m <= 4; m ++){
+	
+// La linea horizontal de colores se repite 4 veces en el cuadro, La primera comienza en la cordenada Y = 25
+  for ( m = 1; m <= 4; m ++){
   dummy ++;  
   rectx = 25; 
   if (dummy == 1){
@@ -59,10 +63,12 @@ function setup() {
     else{
     	cordy += 80;
     }   
-	// Primer patrón: 3 Rectangulos del mismo color 
+// Tercer patrón: El segundo patrón se repite 3 veces (en una linea horizontal hay 6 grupos de 3 cuadrados y esos grupos están 3 veces)
+// Con este for creo la fila de colores #1 
   	for ( p = 1; p <= 3; p += 1){
       contador = 0;  
-	// Segundo patrón: ese grupo de rectangulos se repiten 6 veces cambiandoel color
+// Segundo patrón: ese grupo de rectangulos se repiten 6 veces cambiandole color
+// Hay 6 combinacines de colores
       for ( j = 1; j <= 6; j +=1){	
         contador = contador + 1;
         if (contador == 1 ){
@@ -83,7 +89,7 @@ function setup() {
         else {
           fill (212,197,163);
         }
-	 // Se pintan los grupos de 6 colores 4 veces
+// Primer patrón: 3 rectangulos del mismo color
         for ( i = 1; i < 4; i ++){
             rect(rectx,cordy, 4, 40);
             rectx = rectx + 8;
@@ -96,7 +102,8 @@ function setup() {
   }      
 
 
-  // Segundo patron de lineas de colores
+// Segundo patrón de lineas de colores. 
+// Se hace de la mima manera pero la posición inicial en X es 49 & la de de Y es 85
   rectx = 49;
   dummy = 0;
   for (l = 1; l<=5; l++){  	
@@ -117,9 +124,12 @@ function setup() {
     else{
     	cordy += 80;
     } 
-	  // Selección de colores para los segundos patrones de colores
+// Tercer patrón: El segundo patrón se repite 3 veces (en una linea horizontal hay 6 grupos de 3 cuadrados y esos grupos están 3 veces)
+// Con este for creo la fila de colores #1 
     for ( a = 1; a <4; a++){
       contador = 0;  
+// Segundo patrón: ese grupo de rectangulos se repiten 6 veces cambiandole color
+// Hay 6 combinacines de colores
       for ( b = 1; b < 7; b ++){	
         contador ++;
         if (contador == 1 ){
@@ -140,7 +150,7 @@ function setup() {
         else {
           fill (201,174,162);
         }
-	      // Creación de los rectangulos
+// Primer patrón: 3 rectangulos del mismo color
         for ( c = 1; c < 4; c ++){
             rect(rectx,cordy, 4, 40);
             rectx = rectx + 8;
@@ -151,7 +161,8 @@ function setup() {
     } 
   
   }
-  // Creación de lineas legras que están encima de las lineas de colores
+	
+// Creación de lineas legras que están encima de las lineas de colores
   cordy = 80;
   rectx = 0;
   fill(0);
