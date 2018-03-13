@@ -91,7 +91,7 @@ function draw() {
       p = 0;
       j = 495;
     }
-
+// Carga la imagen inicial 
     if (mouseX > btn3x && mouseX < btn3x + tamaño +40 &&
       mouseY > y && mouseY < y + tamaño) {
       image(imagen, 0, 60, 500, 500);
