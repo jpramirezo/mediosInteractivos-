@@ -43,7 +43,7 @@ function setup() {
     }
     cordy += 34;
   }
- 	// La linea se repite 4 veces en el cuadro 
+ 	// La linea horizontal de colores se repite 4 veces en el cuadro 
 	for ( m = 1; m <= 4; m ++){
   dummy ++;  
   rectx = 25; 
@@ -96,7 +96,7 @@ function setup() {
   }      
 
 
-  // Lineas negras arriba de los colores 
+  // Segundo patron de lineas de colores
   rectx = 49;
   dummy = 0;
   for (l = 1; l<=5; l++){  	
@@ -140,7 +140,7 @@ function setup() {
         else {
           fill (201,174,162);
         }
-	      // Creacin de los rectangulos
+	      // Creación de los rectangulos
         for ( c = 1; c < 4; c ++){
             rect(rectx,cordy, 4, 40);
             rectx = rectx + 8;
@@ -151,7 +151,7 @@ function setup() {
     } 
   
   }
-  
+  // Creación de lineas legras que están encima de las lineas de colores
   cordy = 80;
   rectx = 0;
   fill(0);
