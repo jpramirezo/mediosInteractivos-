@@ -190,7 +190,7 @@ function draw() {
     }
 
     // Si el la represa se completa ganas 
-    if (radio <= 300) {
+    if (radio <= 400) {
       estado = WIN;
     }
 
@@ -440,7 +440,7 @@ function osos(_genero) {
       dummy1 = abs(this.dirY);
 
       //Si el radio del lago es menor a 400 los osos se mueven más rápido 
-      if (radio <= 400) {
+      if (radio <= 460) {
         this.dirX = (this.dirX / dummy) * random(3.5, 5);
         this.dirY = (this.dirY / dummy1) * random(3.5, 5);
       } else {
