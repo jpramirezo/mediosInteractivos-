@@ -449,9 +449,6 @@ function osos(_genero) {
         this.dirX = (this.dirX / dummy) * random(1, 3);
         this.dirY = (this.dirY / dummy1) * random(1, 3);
       }
-      //AL FIN NO LO CAMBIAMOOS. PODRIAS HACERLO PERO SE ME OCURRE QUE SIMPLEMENTE DESDE EL PRINCIPIO 
-      //ASIGNES UN RANDOM PARA CUANDO SE ESTE CREANDO CADA OSO. ESO NO HACE QUE CADA VEZ QUE REBOTE REBOTE 
-      //HACIA UN LADO DIFERENTE PERO AL MENOS CAMBIAN
 
     }
 
