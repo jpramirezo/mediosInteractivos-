@@ -1,14 +1,9 @@
-/*
-Mejorar:
-1. forma de los castores 
-2. calidad de imagenes 
-3. mejorar imagen castores 
-4. dirección animales
-*/
 var dummy;
 var dummy1;
 var perdedor = 0;
 var ganador = 0;
+var perdedor1 = 0;
+
 var osoF = [];
 var castorF = [];
 var arbol = [];
@@ -20,6 +15,7 @@ var INTRO = 1;
 var JUEGO = 2;
 var WIN = 3;
 var LOSE = 4;
+var LOSE1 = 5;
 var INS = 6;
 
 var x = [];
@@ -197,23 +193,23 @@ function draw() {
     }
     
     //Si el lago crece demasiado pierdes 
-  	if(radio >= height -80){
-    	estado = LOSE;  
+  	if(radio >= height -70){
+    	estado = LOSE1;  
     }
    
-    /*
+/*
     //Muevo el castor
     if(mouseIsPressed == true){
     	castorF[0].x = mouseX;
       castorF[0].y = mouseY;
     }
-    */
+*/
   }else if(estado == WIN){
   	background(0);
     fill(255);
   	text("Ganaste", width/2, height/2);
 
-  }else{
+  }else if(estado == LOSE){
   	background(0);
     fill(255);
     textAlign(CENTER);
@@ -221,7 +217,14 @@ function draw() {
     text("OH, OH",width/2, height/3);
     textSize(20);
   	text("Veo que no fuiste más rápido que los osos, intenta una vez más", width/2, height/2);
-	}
+	}else{
+    background(0);
+    fill(255);
+    textAlign(CENTER);
+    textSize(20);
+    text("¡Tardaste demasiado!, el valle se inundó", width/2, height/2);
+
+  }
 }
 
 //Cambio de estados en el iPad;
@@ -235,37 +238,30 @@ function touchEnded(){
   	estado = INTRO;  
   }else if (estado == LOSE && perdedor == 1){
   	estado = INTRO;  
+  }else if(estado == LOSE1 && perdedor1 == 1){
+		estado = INTRO;  
   }
   
   //Evito que a penas se suelte el mouse después de perder pase a la INTRO
   if (estado == LOSE && perdedor == 0){
   	perdedor = 1;  
   }
-    if (estado == WIN && ganador == 0){
+  
+  if (estado == LOSE1 && perdedor1 == 0){
+  	perdedor1 = 1;  
+  }
+  
+  if (estado == WIN && ganador == 0){
   	ganador = 1;  
   }
 }
 
-function mouseDragged(){
+function touchMoved(){
 	if(estado == JUEGO){
     castorF[0].x = touches[0].x;
     castorF[0].y = touches[0].y;
   }
 }
-/*
-//Cambio de estados en el computador 
-function mouseReleased(){
-  if(estado == INTRO){
-  	estado = INS;  
-  }else if(estado == INS){
-  	estado = JUEGO;  
-  }else if(estado == WIN){
-  	estado = INTRO;  
-  }else if (estado == LOSE){
-  	estado = INTRO;  
-  }
-}
-*/
 
 //Función castores adultos
 function castores(_genero) {
@@ -282,14 +278,18 @@ function castores(_genero) {
       fill(79, 19, 14);
     }
     stroke(1);
+		triangle(this.x, this.y-3, this.x + this.tamano/2, this.y -4, this.x + this.tamano/2, this.y + this.tamano/2);
     triangle(this.x-this.tamano/3, this.y - this.tamano/3, this.x,this.y+this.tamano/2, this.x + this.tamano, this.y- this.tamano/3.5);
-		beginShape();
+    beginShape();
     vertex(this.x,this.y);
     vertex(this.x,this.y+this.tamano/2);
     vertex(this.x-this.tamano/2,this.y+this.tamano/2);
     vertex(this.x-this.tamano/3, this.y - this.tamano/3);
     vertex(this.x,this.y);
     endShape();
+    
+	  beginShape();
+    vertex(this.x + this.tamano/2, this.y -4, this.x);
   }  
 }
 
