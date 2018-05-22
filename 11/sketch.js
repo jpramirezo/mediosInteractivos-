@@ -228,6 +228,9 @@ function draw() {
   }
 }
 
+function mouseDragged(){
+	return false;
+}
 //Cambio de estados en el iPad;
 function touchEnded() {
   //Cambio los estados del juego 
