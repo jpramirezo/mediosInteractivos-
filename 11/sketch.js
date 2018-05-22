@@ -26,7 +26,7 @@ var genero;
 
 var madera = 0;
 var ancho = 40;
-var radio = 700;
+var radio = 800;
 var posX = 20;
 var posY = 0;
 var represa = 30;
@@ -386,8 +386,8 @@ function osos(_genero) {
   this.y = 0;
   this.tamano = 35;
   this.genero = _genero;
-  this.dirX = 2.5;
-  this.dirY = 2.5;
+  this.dirX = 3.5;
+  this.dirY = 3.5;
 
   this.dibujarse = function() {
     if (this.genero == 1) {
