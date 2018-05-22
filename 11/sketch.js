@@ -452,7 +452,7 @@ function osos(_genero) {
 
     }
 
-
+//Evito que los osos se salgan de la pantalla
     if (this.x >= width) {
       this.x = 0;
     } else if (this.x <= 0) {
