@@ -51,7 +51,7 @@ function setup() {
   }
 
   // Inicializo los osos 
-  for (i = 0; i < 13; i++) {
+  for (i = 0; i < 15; i++) {
     osoF[i] = new osos(1);
   }
 
@@ -84,7 +84,7 @@ function draw() {
       arbol[i].tamano = 40;
     }
 
-    for (i = 0; i < 13; i++) {
+    for (i = 0; i < 15; i++) {
       osoF[i].x = 0;
       osoF[i].y = 0;
       osoF[i].dirX = 1.5;
@@ -386,8 +386,8 @@ function osos(_genero) {
   this.y = 0;
   this.tamano = 35;
   this.genero = _genero;
-  this.dirX = 1.5;
-  this.dirY = 1.5;
+  this.dirX = 2.5;
+  this.dirY = 2.5;
 
   this.dibujarse = function() {
     if (this.genero == 1) {
