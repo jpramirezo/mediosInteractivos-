@@ -199,24 +199,18 @@ function draw() {
       estado = LOSE1;
     }
 
-		/*
+
         //Muevo el castor
         if(mouseIsPressed == true){
         	castorF[0].x = mouseX;
           castorF[0].y = mouseY;
         }
-    */
-   
-	//Estado cuando ganas  
-  } else if (estado == WIN) {
+  } else if (estado == WIN) { //Estado cuando ganas
     background(0);
     fill(255);
-    textSize(25);
-    textAlign(CENTER);
     text("¡Felicidades!, has salvado el valle", width / 2, height / 2);
-	
-//Estado cuando un oso te come
-  } else if (estado == LOSE) {
+
+  } else if (estado == LOSE) { //Estado cuando un oso te come
     background(0);
     fill(255);
     textAlign(CENTER);
@@ -236,7 +230,6 @@ function draw() {
 
 //Cambio de estados en el iPad;
 function touchEnded() {
-	
   //Cambio los estados del juego 
   if (estado == INTRO) {
     estado = INS;
@@ -263,14 +256,15 @@ function touchEnded() {
     ganador = 1;
   }
 }
-
 //Muevo al castor
+/*
 function touchMoved(){
 	if(estado == JUEGO){
     castorF[0].x = touches[0].x;
     castorF[0].y = touches[0].y;
   }
 }
+*/
 
 
 //Función castores adultos
@@ -279,17 +273,18 @@ function castores(_genero) {
   this.y = height / 2;
   this.tamano = 16;
   this.genero = _genero;
-  this.dirX = touches[0].x;
+  this.dirX = mouseX;
 
   this.dibujarse = function() {
     stroke(1);
-	  
+    
     //Cambio la dirección del castor dependiendo si se mueve a la derecha o a la izquierda 
     //Evaluo la posición actual y la comparo con la nueva posición después de 16 frames.
+    
     if( frameCount%16 == 0){
-    	dir = touches[0].x;
+    	dir = mouseX;
     }
-    if(dir>= touches[0].x){
+    if(dir>= mouseX){
     //Dientes 
     fill(255)
     beginShape();
@@ -452,7 +447,7 @@ function osos(_genero) {
 
     }
 
-//Evito que los osos se salgan de la pantalla
+		//Evito que los osos se salgan de la pantalla
     if (this.x >= width) {
       this.x = 0;
     } else if (this.x <= 0) {
