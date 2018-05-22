@@ -147,7 +147,7 @@ function draw() {
     //Osos se comen a castores
     for (i = 0; i < osoF.length; i++) {
       for (j = 0; j < castorF.length; j++) {
-        if ((dist(castorF[j].x, castorF[j].y, osoF[i].x, osoF[i].y) < 30)) {
+        if ((dist(castorF[j].x, castorF[j].y, osoF[i].x, osoF[i].y) < 35)) {
           estado = LOSE;
         }
       }
@@ -271,7 +271,7 @@ function touchMoved(){
 function castores(_genero) {
   this.x = width / 2;
   this.y = height / 2;
-  this.tamano = 16;
+  this.tamano = 20;
   this.genero = _genero;
   this.dirX = mouseX;
 
@@ -381,7 +381,7 @@ function castores(_genero) {
 function osos(_genero) {
   this.x = 0;
   this.y = 0;
-  this.tamano = 30;
+  this.tamano = 35;
   this.genero = _genero;
   this.dirX = 1.5;
   this.dirY = 1.5;
