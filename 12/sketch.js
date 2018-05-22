@@ -199,18 +199,19 @@ function draw() {
       estado = LOSE1;
     }
 
-
-        //Muevo el castor
-        if(mouseIsPressed == true){
-        	castorF[0].x = mouseX;
-          castorF[0].y = mouseY;
-        }
-  } else if (estado == WIN) {
+    /*
+            //Muevo el castor
+            if(mouseIsPressed == true){
+            	castorF[0].x = mouseX;
+              castorF[0].y = mouseY;
+            }
+        */
+  } else if (estado == WIN) { //Estado cuando ganas
     background(0);
     fill(255);
-    text("Ganaste", width / 2, height / 2);
+    text("¡Felicidades!, has salvado el valle", width / 2, height / 2);
 
-  } else if (estado == LOSE) {
+  } else if (estado == LOSE) { //Estado cuando un oso te come
     background(0);
     fill(255);
     textAlign(CENTER);
@@ -218,7 +219,7 @@ function draw() {
     text("OH, OH", width / 2, height / 3);
     textSize(20);
     text("Veo que no fuiste más rápido que los osos, intenta una vez más", width / 2, height / 2);
-  } else {
+  } else { //Estado cuando el valle se inunda
     background(0);
     fill(255);
     textAlign(CENTER);
@@ -256,14 +257,17 @@ function touchEnded() {
     ganador = 1;
   }
 }
-/*
-function touchMoved(){
-	if(estado == JUEGO){
+//Muevo al castor
+
+function touchMoved() {
+  if (estado == JUEGO) {
     castorF[0].x = touches[0].x;
     castorF[0].y = touches[0].y;
   }
 }
-*/
+
+
+
 //Función castores adultos
 function castores(_genero) {
   this.x = width / 2;
@@ -274,98 +278,101 @@ function castores(_genero) {
 
   this.dibujarse = function() {
     stroke(1);
-    
-    if( frameCount%16 == 0){
-    	dir = mouseX;
+
+    //Cambio la dirección del castor dependiendo si se mueve a la derecha o a la izquierda 
+    //Evaluo la posición actual y la comparo con la nueva posición después de 16 frames.
+
+    if (frameCount % 16 == 0) {
+      dir = mouseX;
     }
-    if(dir>= mouseX){
-    //Dientes 
-    fill(255)
-    beginShape();
-    vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y - this.tamano / 2);
-    vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y);
-    vertex(this.x - this.tamano * 2 / 1.1 + 5, this.y);
-    vertex(this.x - this.tamano * 2 / 1.1 + 5, this.y - this.tamano / 2);
-    vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y - this.tamano / 2);
-    endShape();
+    if (dir >= mouseX) {
+      //Dientes 
+      fill(255)
+      beginShape();
+      vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y - this.tamano / 2);
+      vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y);
+      vertex(this.x - this.tamano * 2 / 1.1 + 5, this.y);
+      vertex(this.x - this.tamano * 2 / 1.1 + 5, this.y - this.tamano / 2);
+      vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y - this.tamano / 2);
+      endShape();
 
-    fill(176, 65, 30);
-    //Patas
-    beginShape();
-    vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 3);
-    vertex(this.x - this.tamano - 5, this.y + this.tamano / 3 + 3);
-    vertex(this.x - this.tamano - 4, this.y + this.tamano / 3 - 2);
-    vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 3 - 5);
-    endShape();
+      fill(176, 65, 30);
+      //Patas
+      beginShape();
+      vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 3);
+      vertex(this.x - this.tamano - 5, this.y + this.tamano / 3 + 3);
+      vertex(this.x - this.tamano - 4, this.y + this.tamano / 3 - 2);
+      vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 3 - 5);
+      endShape();
 
-    //Cuerpo
-    beginShape();
-    vertex(this.x + this.tamano, this.y);
-    vertex(this.x + this.tamano / 1.5, this.y - this.tamano / 1.3);
-    vertex(this.x, this.y - this.tamano);
-    vertex(this.x - this.tamano / 1.5, this.y - this.tamano / 1.3);
-    vertex(this.x - this.tamano, this.y - this.tamano);
-    vertex(this.x - this.tamano * 2 / 1.1, this.y - this.tamano + 3);
-    vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y - this.tamano / 2);
-    vertex(this.x - this.tamano, this.y);
-    vertex(this.x - this.tamano / 2, this.y + this.tamano / 1.2);
-    vertex(this.x, this.y + this.tamano);
-    vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 1.3);
-    vertex(this.x + this.tamano, this.y);
-    endShape();
-    //Cola
-    fill(41, 31, 14);
-    beginShape();
-    vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 1.3);
-    vertex(this.x + this.tamano * 1.7, this.y + this.tamano / 1.1);
-    vertex(this.x + this.tamano * 2.3, this.y + this.tamano / 1.5);
-    vertex(this.x + this.tamano * 1.7, this.y + this.tamano / 3.5);
-    vertex(this.x + this.tamano - 4, this.y + this.tamano / 3);
-    endShape();
-    }else{
-    	  //Dientes 
-    fill(255)
-    beginShape();
-    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
-    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y);
-    vertex(this.x + this.tamano * 2 / 1.1 - 5, this.y);
-    vertex(this.x + this.tamano * 2 / 1.1 - 5, this.y - this.tamano / 2);
-    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
-    endShape();
+      //Cuerpo
+      beginShape();
+      vertex(this.x + this.tamano, this.y);
+      vertex(this.x + this.tamano / 1.5, this.y - this.tamano / 1.3);
+      vertex(this.x, this.y - this.tamano);
+      vertex(this.x - this.tamano / 1.5, this.y - this.tamano / 1.3);
+      vertex(this.x - this.tamano, this.y - this.tamano);
+      vertex(this.x - this.tamano * 2 / 1.1, this.y - this.tamano + 3);
+      vertex(this.x - this.tamano * 2 / 1.1 + 1, this.y - this.tamano / 2);
+      vertex(this.x - this.tamano, this.y);
+      vertex(this.x - this.tamano / 2, this.y + this.tamano / 1.2);
+      vertex(this.x, this.y + this.tamano);
+      vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 1.3);
+      vertex(this.x + this.tamano, this.y);
+      endShape();
+      //Cola
+      fill(41, 31, 14);
+      beginShape();
+      vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 1.3);
+      vertex(this.x + this.tamano * 1.7, this.y + this.tamano / 1.1);
+      vertex(this.x + this.tamano * 2.3, this.y + this.tamano / 1.5);
+      vertex(this.x + this.tamano * 1.7, this.y + this.tamano / 3.5);
+      vertex(this.x + this.tamano - 4, this.y + this.tamano / 3);
+      endShape();
+    } else {
+      //Dientes 
+      fill(255)
+      beginShape();
+      vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
+      vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y);
+      vertex(this.x + this.tamano * 2 / 1.1 - 5, this.y);
+      vertex(this.x + this.tamano * 2 / 1.1 - 5, this.y - this.tamano / 2);
+      vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
+      endShape();
 
-    fill(176, 65, 30);
-    //Patas
-    beginShape();
-    vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 3);
-    vertex(this.x + this.tamano + 5, this.y + this.tamano / 3 + 3);
-    vertex(this.x + this.tamano + 4, this.y + this.tamano / 3 - 2);
-    vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 3 - 5);
-    endShape();
+      fill(176, 65, 30);
+      //Patas
+      beginShape();
+      vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 3);
+      vertex(this.x + this.tamano + 5, this.y + this.tamano / 3 + 3);
+      vertex(this.x + this.tamano + 4, this.y + this.tamano / 3 - 2);
+      vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 3 - 5);
+      endShape();
 
-    //Cuerpo
-    beginShape();
-    vertex(this.x - this.tamano, this.y);
-    vertex(this.x - this.tamano / 1.5, this.y - this.tamano / 1.3);
-    vertex(this.x, this.y - this.tamano);
-    vertex(this.x + this.tamano / 1.5, this.y - this.tamano / 1.3);
-    vertex(this.x + this.tamano, this.y - this.tamano);
-    vertex(this.x + this.tamano * 2 / 1.1, this.y - this.tamano + 3);
-    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
-    vertex(this.x + this.tamano, this.y);
-    vertex(this.x + this.tamano / 2, this.y + this.tamano / 1.2);
-    vertex(this.x, this.y + this.tamano);
-    vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 1.3);
-    vertex(this.x - this.tamano, this.y);
-    endShape();
-    //Cola
-    fill(41, 31, 14);
-    beginShape();
-    vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 1.3);
-    vertex(this.x - this.tamano * 1.7, this.y + this.tamano / 1.1);
-    vertex(this.x - this.tamano * 2.3, this.y + this.tamano / 1.5);
-    vertex(this.x - this.tamano * 1.7, this.y + this.tamano / 3.5);
-    vertex(this.x - this.tamano + 4, this.y + this.tamano / 3);
-    endShape(); 
+      //Cuerpo
+      beginShape();
+      vertex(this.x - this.tamano, this.y);
+      vertex(this.x - this.tamano / 1.5, this.y - this.tamano / 1.3);
+      vertex(this.x, this.y - this.tamano);
+      vertex(this.x + this.tamano / 1.5, this.y - this.tamano / 1.3);
+      vertex(this.x + this.tamano, this.y - this.tamano);
+      vertex(this.x + this.tamano * 2 / 1.1, this.y - this.tamano + 3);
+      vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
+      vertex(this.x + this.tamano, this.y);
+      vertex(this.x + this.tamano / 2, this.y + this.tamano / 1.2);
+      vertex(this.x, this.y + this.tamano);
+      vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 1.3);
+      vertex(this.x - this.tamano, this.y);
+      endShape();
+      //Cola
+      fill(41, 31, 14);
+      beginShape();
+      vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 1.3);
+      vertex(this.x - this.tamano * 1.7, this.y + this.tamano / 1.1);
+      vertex(this.x - this.tamano * 2.3, this.y + this.tamano / 1.5);
+      vertex(this.x - this.tamano * 1.7, this.y + this.tamano / 3.5);
+      vertex(this.x - this.tamano + 4, this.y + this.tamano / 3);
+      endShape();
     }
 
   }
@@ -438,13 +445,10 @@ function osos(_genero) {
         this.dirX = (this.dirX / dummy) * random(1, 3);
         this.dirY = (this.dirY / dummy1) * random(1, 3);
       }
-      //AL FIN NO LO CAMBIAMOOS. PODRIAS HACERLO PERO SE ME OCURRE QUE SIMPLEMENTE DESDE EL PRINCIPIO 
-      //ASIGNES UN RANDOM PARA CUANDO SE ESTE CREANDO CADA OSO. ESO NO HACE QUE CADA VEZ QUE REBOTE REBOTE 
-      //HACIA UN LADO DIFERENTE PERO AL MENOS CAMBIAN
 
     }
 
-
+    //Evito que los osos se salgan de la pantalla
     if (this.x >= width) {
       this.x = 0;
     } else if (this.x <= 0) {
