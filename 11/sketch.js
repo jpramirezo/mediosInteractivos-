@@ -79,7 +79,7 @@ function draw() {
     castorF[0].y = height / 2;
     madera = 0;
     ancho = 40;
-    radio = 600;
+    radio = 500;
     for (i = 0; i < 6; i++) {
       arbol[i].tamano = 40;
     }
