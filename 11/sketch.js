@@ -79,7 +79,7 @@ function draw() {
     castorF[0].y = height / 2;
     madera = 0;
     ancho = 40;
-    radio = 400;
+    radio = 600;
     for (i = 0; i < 6; i++) {
       arbol[i].tamano = 40;
     }
@@ -87,8 +87,8 @@ function draw() {
     for (i = 0; i < 15; i++) {
       osoF[i].x = 0;
       osoF[i].y = 0;
-      osoF[i].dirX = 1.5;
-      osoF[i].dirY = 1.5;
+      osoF[i].dirX = 2.5;
+      osoF[i].dirY = 2.5;
     }
     ganador = 0;
     perdedor = 0;
