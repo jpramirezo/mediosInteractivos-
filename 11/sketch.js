@@ -438,11 +438,11 @@ function osos(_genero) {
 
       //Si el radio del lago es menor a 400 los osos se mueven más rápido 
       if (radio <= 300) {
-        this.dirX = (this.dirX / dummy) * random(2, 4);
-        this.dirY = (this.dirY / dummy1) * random(2, 4);
+        this.dirX = (this.dirX / dummy) * random(3, 4.5);
+        this.dirY = (this.dirY / dummy1) * random(3, 4.5);
       } else {
-        this.dirX = (this.dirX / dummy) * random(1, 3);
-        this.dirY = (this.dirY / dummy1) * random(1, 3);
+        this.dirX = (this.dirX / dummy) * random(2, 3.5);
+        this.dirY = (this.dirY / dummy1) * random(2, 3.5);
       }
 
     }
