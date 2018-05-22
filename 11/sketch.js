@@ -3,6 +3,7 @@ var dummy1;
 var perdedor = 0;
 var ganador = 0;
 var perdedor1 = 0;
+var dir;
 
 var osoF = [];
 var castorF = [];
@@ -198,18 +199,23 @@ function draw() {
       estado = LOSE1;
     }
 
-    /*
+		/*
         //Muevo el castor
         if(mouseIsPressed == true){
         	castorF[0].x = mouseX;
           castorF[0].y = mouseY;
         }
     */
+   
+	//Estado cuando ganas  
   } else if (estado == WIN) {
     background(0);
     fill(255);
-    text("Ganaste", width / 2, height / 2);
-
+    textSize(25);
+    textAlign(CENTER);
+    text("¡Felicidades!, has salvado el valle", width / 2, height / 2);
+	
+//Estado cuando un oso te come
   } else if (estado == LOSE) {
     background(0);
     fill(255);
@@ -218,7 +224,7 @@ function draw() {
     text("OH, OH", width / 2, height / 3);
     textSize(20);
     text("Veo que no fuiste más rápido que los osos, intenta una vez más", width / 2, height / 2);
-  } else {
+  } else { //Estado cuando el valle se inunda
     background(0);
     fill(255);
     textAlign(CENTER);
@@ -230,6 +236,7 @@ function draw() {
 
 //Cambio de estados en el iPad;
 function touchEnded() {
+	
   //Cambio los estados del juego 
   if (estado == INTRO) {
     estado = INS;
@@ -257,6 +264,7 @@ function touchEnded() {
   }
 }
 
+//Muevo al castor
 function touchMoved(){
 	if(estado == JUEGO){
     castorF[0].x = touches[0].x;
@@ -264,16 +272,24 @@ function touchMoved(){
   }
 }
 
+
 //Función castores adultos
 function castores(_genero) {
   this.x = width / 2;
   this.y = height / 2;
   this.tamano = 16;
   this.genero = _genero;
-  this.dirX = mouseX;
+  this.dirX = touches[0].x;
 
   this.dibujarse = function() {
     stroke(1);
+	  
+    //Cambio la dirección del castor dependiendo si se mueve a la derecha o a la izquierda 
+    //Evaluo la posición actual y la comparo con la nueva posición después de 16 frames.
+    if( frameCount%16 == 0){
+    	dir = touches[0].x;
+    }
+    if(dir>= touches[0].x){
     //Dientes 
     fill(255)
     beginShape();
@@ -317,7 +333,51 @@ function castores(_genero) {
     vertex(this.x + this.tamano * 1.7, this.y + this.tamano / 3.5);
     vertex(this.x + this.tamano - 4, this.y + this.tamano / 3);
     endShape();
+    }else{
+    	  //Dientes 
+    fill(255)
+    beginShape();
+    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
+    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y);
+    vertex(this.x + this.tamano * 2 / 1.1 - 5, this.y);
+    vertex(this.x + this.tamano * 2 / 1.1 - 5, this.y - this.tamano / 2);
+    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
+    endShape();
 
+    fill(176, 65, 30);
+    //Patas
+    beginShape();
+    vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 3);
+    vertex(this.x + this.tamano + 5, this.y + this.tamano / 3 + 3);
+    vertex(this.x + this.tamano + 4, this.y + this.tamano / 3 - 2);
+    vertex(this.x + this.tamano / 1.5, this.y + this.tamano / 3 - 5);
+    endShape();
+
+    //Cuerpo
+    beginShape();
+    vertex(this.x - this.tamano, this.y);
+    vertex(this.x - this.tamano / 1.5, this.y - this.tamano / 1.3);
+    vertex(this.x, this.y - this.tamano);
+    vertex(this.x + this.tamano / 1.5, this.y - this.tamano / 1.3);
+    vertex(this.x + this.tamano, this.y - this.tamano);
+    vertex(this.x + this.tamano * 2 / 1.1, this.y - this.tamano + 3);
+    vertex(this.x + this.tamano * 2 / 1.1 - 1, this.y - this.tamano / 2);
+    vertex(this.x + this.tamano, this.y);
+    vertex(this.x + this.tamano / 2, this.y + this.tamano / 1.2);
+    vertex(this.x, this.y + this.tamano);
+    vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 1.3);
+    vertex(this.x - this.tamano, this.y);
+    endShape();
+    //Cola
+    fill(41, 31, 14);
+    beginShape();
+    vertex(this.x - this.tamano / 1.5, this.y + this.tamano / 1.3);
+    vertex(this.x - this.tamano * 1.7, this.y + this.tamano / 1.1);
+    vertex(this.x - this.tamano * 2.3, this.y + this.tamano / 1.5);
+    vertex(this.x - this.tamano * 1.7, this.y + this.tamano / 3.5);
+    vertex(this.x - this.tamano + 4, this.y + this.tamano / 3);
+    endShape(); 
+    }
 
   }
 }
