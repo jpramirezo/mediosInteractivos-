@@ -26,7 +26,7 @@ var genero;
 
 var madera = 0;
 var ancho = 40;
-var radio = 600;
+var radio = 700;
 var posX = 20;
 var posY = 0;
 var represa = 30;
@@ -444,8 +444,8 @@ function osos(_genero) {
         this.dirX = (this.dirX / dummy) * random(3.5, 5);
         this.dirY = (this.dirY / dummy1) * random(3.5, 5);
       } else {
-        this.dirX = (this.dirX / dummy) * random(2, 3.5);
-        this.dirY = (this.dirY / dummy1) * random(2, 3.5);
+        this.dirX = (this.dirX / dummy) * random(1, 3);
+        this.dirY = (this.dirY / dummy1) * random(1, 3);
       }
 
     }
