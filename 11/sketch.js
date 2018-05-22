@@ -279,7 +279,7 @@ function castores(_genero) {
   this.y = height / 2;
   this.tamano = 16;
   this.genero = _genero;
-  this.dirX = mouseX;
+  this.dirX = touches[0].x;
 
   this.dibujarse = function() {
     stroke(1);
@@ -287,9 +287,9 @@ function castores(_genero) {
     //Cambio la dirección del castor dependiendo si se mueve a la derecha o a la izquierda 
     //Evaluo la posición actual y la comparo con la nueva posición después de 16 frames.
     if( frameCount%16 == 0){
-    	dir = mouseX;
+    	dir = touches[0].x;
     }
-    if(dir>= mouseX){
+    if(dir>= touches[0].x){
     //Dientes 
     fill(255)
     beginShape();
