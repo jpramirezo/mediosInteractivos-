@@ -26,7 +26,7 @@ var genero;
 
 var madera = 0;
 var ancho = 40;
-var radio = 400;
+var radio = 600;
 var posX = 20;
 var posY = 0;
 var represa = 30;
@@ -190,7 +190,7 @@ function draw() {
     }
 
     // Si el la represa se completa ganas 
-    if (radio <= 200) {
+    if (radio <= 300) {
       estado = WIN;
     }
 
