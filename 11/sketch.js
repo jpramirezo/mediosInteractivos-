@@ -201,7 +201,7 @@ function draw() {
 
 
         //Muevo el castor
-        if(mouseIsPressed == true && dist(mouseX, mouseY, castorF[0].x,castorF[0].y)<200){
+        if(mouseIsPressed == true && dist(mouseX, mouseY, castorF[0].x,castorF[0].y)<500){
         	castorF[0].x = mouseX;
           castorF[0].y = mouseY;
         }
